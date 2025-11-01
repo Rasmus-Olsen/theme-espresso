@@ -388,7 +388,7 @@ Supported variables
                         <p>{{ block.settings.title }}</p>
                       {%- endif -%}
 
-                      {%- if recommendations.products_count > 2 -%}
+                      {%- if recommendations.products_count > 1 -%}
                         <div class="h-stack gap-2">
                           <carousel-prev-button aria-controls="{{ carousel_id }}">
                             <button type="button" disabled class="circle-button">
@@ -408,7 +408,11 @@ Supported variables
                     </div>
                   {%- endif -%}
 
-                  <scroll-carousel id="{{ carousel_id }}" class="complementary-products complementary-products--vertical scroll-area bleed sm:unbleed snap-x">
+                  {%- assign comp_classes = 'complementary-products complementary-products--vertical scroll-area bleed sm:unbleed snap-x' -%}
+                  {%- if recommendations.products_count == 1 -%}
+                    {%- assign comp_classes = comp_classes | append: ' is-single' -%}
+                  {%- endif -%}
+                  <scroll-carousel id="{{ carousel_id }}" class="{{ comp_classes }}">
                     {%- for product in recommendations.products -%}
                       {%- render 'product-cross-sell', product: product, layout: 'vertical', show_quick_buy: true -%}
                     {%- endfor -%}

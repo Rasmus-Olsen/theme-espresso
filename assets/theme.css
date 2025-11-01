@@ -3220,6 +3220,13 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   column-gap: 1rem;
 }
 
+@media screen and (max-width: 999px) {
+  .complementary-products--vertical.is-single,
+  .complementary-products--vertical:not(:has(> *:nth-child(2))) {
+    grid-auto-columns: 100%;
+  }
+}
+
 .complementary-products--horizontal {
   grid-auto-columns: 250px;
   column-gap: 1.25rem;

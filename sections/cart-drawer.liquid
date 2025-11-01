@@ -171,7 +171,7 @@
                   {%- assign carousel_id = 'cart-drawer-cross-sell-' | append: section.id -%}
 
                   {%- capture product_recommendations -%}
-                    <scroll-carousel id="{{ carousel_id }}" class="cart-drawer__cross-sell-carousel scroll-area bleed">
+                    <scroll-carousel id="{{ carousel_id }}" class="complementary-products complementary-products--vertical scroll-area bleed sm:unbleed snap-x">
                       {%- for product in recommendations.products -%}
                         {%- assign line_items_for_product = cart.items | where: 'product_id', product.id -%}
 
@@ -179,7 +179,7 @@
                           {%- comment -%}We only show recommendations of products that do not exist in the cart yet{%- endcomment -%}
                           {%- assign recommendations_count = recommendations_count | plus: 1 -%}
 
-                          {%- render 'product-cross-sell', product: product, layout: 'horizontal', show_quick_buy: true, background: section.settings.color_scheme.settings.secondary_background -%}
+                          {%- render 'product-cross-sell', product: product, layout: 'vertical', show_quick_buy: true -%}
                         {%- endif -%}
                       {%- endfor -%}
                     </scroll-carousel>
