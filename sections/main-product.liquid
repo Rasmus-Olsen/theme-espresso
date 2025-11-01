@@ -1475,15 +1475,6 @@
       "name": "t:sections.main_product.blocks.icons_with_text.name",
       "settings": [
         {
-          "type": "range",
-          "min": 1,
-          "max": 3,
-          "id": "items_per_row",
-          "label": "t:sections.main_product.blocks.icons_with_text.items_per_row",
-          "info": "t:sections.main_product.blocks.icons_with_text.items_per_row_info",
-          "default": 1
-        },
-        {
           "type": "header",
           "content": "t:sections.main_product.blocks.icons_with_text.icon_1_category"
         },
@@ -1578,6 +1569,72 @@
           "type": "inline_richtext",
           "id": "icon_4_text",
           "label": "t:global.text.text"
+        }
+        ,
+        {
+          "type": "header",
+          "content": "t:sections.main_product.blocks.icons_with_text.icon_5_category"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_5",
+          "label": "t:global.icons.icon"
+        },
+        {
+          "type": "range",
+          "id": "icon_5_width",
+          "min": 8,
+          "max": 64,
+          "step": 2,
+          "unit": "px",
+          "label": "t:global.icons.icon_width",
+          "default": 24
+        },
+        {
+          "type": "inline_richtext",
+          "id": "icon_5_text",
+          "label": "t:global.text.text"
+        },
+        {
+          "type": "checkbox",
+          "id": "boxed",
+          "label": "Boxed background",
+          "default": false
+        },
+        {
+          "type": "color_scheme",
+          "id": "background",
+          "label": "Color scheme",
+          "default": "background-1",
+          "visible_if": "{{ block.settings.boxed }}"
+        },
+        {
+          "type": "color_scheme",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "text-1",
+          "visible_if": "{{ block.settings.boxed }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_custom_colors",
+          "label": "Use custom colors",
+          "default": false,
+          "visible_if": "{{ block.settings.boxed }}"
+        },
+        {
+          "type": "color",
+          "id": "custom_bg",
+          "label": "Background color",
+          "default": "#F8F8F8",
+          "visible_if": "{{ block.settings.use_custom_colors }}"
+        },
+        {
+          "type": "color",
+          "id": "custom_text",
+          "label": "Text color",
+          "default": "#111111",
+          "visible_if": "{{ block.settings.use_custom_colors }}"
         }
       ]
     },

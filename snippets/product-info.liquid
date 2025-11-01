@@ -499,7 +499,7 @@ Supported variables
 
           {%- when 'icons_with_text' -%}
             {%- capture icons -%}
-              {%- for i in (1..4) -%}
+              {%- for i in (1..5) -%}
                 {%- liquid
                   assign icon_setting = 'icon_' | append: i
                   assign icon_width_setting = 'icon_' | append: i | append: '_width'
@@ -507,7 +507,7 @@ Supported variables
                 -%}
 
                 {%- if block.settings[icon_setting] != blank or block.settings[icon_text_setting] != blank -%}
-                  <div class="{% if block.settings.items_per_row == 3 %}v-stack gap-2.5 justify-items-center text-center{% else %}h-stack gap-3{% endif %}">
+                  <div class="h-stack gap-3">
                     {%- render 'icon', image: block.settings[icon_setting], width: block.settings[icon_width_setting] -%}
                     {{- block.settings[icon_text_setting] -}}
                   </div>
@@ -516,9 +516,33 @@ Supported variables
             {%- endcapture -%}
 
             {%- if icons != blank -%}
-              <div class="grid grid-cols-{{ block.settings.items_per_row }} justify-{{ alignment }} gap-3">
-                {{- icons -}}
-              </div>
+              {%- if block.settings.boxed -%}
+                {%- if block.settings.use_custom_colors -%}
+                  {%- if block.settings.custom_bg != blank or block.settings.custom_text != blank -%}
+                    <div class="content-box" style="background: {{ block.settings.custom_bg }}; color: {{ block.settings.custom_text }};">
+                      <div class="v-stack gap-4">
+                        {{- icons -}}
+                      </div>
+                    </div>
+                  {%- else -%}
+                    <div class="content-box" style="{% render 'surface', background: block.settings.background, text_color: block.settings.text_color %}">
+                      <div class="v-stack gap-4">
+                        {{- icons -}}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- else -%}
+                  <div class="content-box" style="{% render 'surface', background: block.settings.background, text_color: block.settings.text_color %}">
+                    <div class="v-stack gap-4">
+                      {{- icons -}}
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                <div class="v-stack gap-4">
+                  {{- icons -}}
+                </div>
+              {%- endif -%}
             {%- endif -%}
 
           {%- when 'modal' -%}
