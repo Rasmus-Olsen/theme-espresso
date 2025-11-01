@@ -3228,6 +3228,9 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 .product-cross-sell {
   grid-template-columns: minmax(0, 1fr);
   display: grid;
+  padding: 5px;
+  border: 1px solid green;
+  border-radius: 16px;
 }
 
 .product-cross-sell--vertical {
