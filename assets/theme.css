@@ -3216,8 +3216,8 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 }
 
 .complementary-products--vertical {
-  grid-auto-columns: 150px;
-  column-gap: .25rem;
+  grid-auto-columns: 90%;
+  column-gap: 1rem;
 }
 
 .complementary-products--horizontal {
@@ -3226,11 +3226,11 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 }
 
 .product-cross-sell {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: 1fr 2fr;;
   display: grid;
-  padding: 5px;
-  border: 1px solid green;
-  border-radius: 16px;
+  padding: 12px 6px;
+  border: 1px solid #E4E4E3;
+  gap: 1rem;
 }
 
 .product-cross-sell--vertical {
@@ -3248,12 +3248,26 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 
 @media screen and (min-width: 1000px) {
   .complementary-products--vertical {
-    grid-auto-columns: calc(33.3333% - .166667rem);
+    grid-auto-columns: calc(50% - 0.5rem);
   }
 
   .complementary-products--horizontal {
     grid-auto-columns: calc(50% - .625rem);
   }
+}
+.small-button {
+  background: rgb(0 0 0);
+  border: 1px solid rgb(0 0 0);
+  border-radius: 8px;
+  color: rgb(255 255 255);
+  font: var(--button-font);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  /* text-align: center; */
+  cursor: pointer;
+  padding: .5rem;
+  display: block;
+  width: fit-content;
 }
 
 .product-card {

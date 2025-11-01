@@ -37,15 +37,15 @@ Supported variables
   {%- if product.featured_media != blank -%}
     <a href="{{ product.url }}" data-instant>
       {%- if layout == 'horizontal' -%}
-        {{- product.featured_media | image_url: width: product.featured_media.width | image_tag: sizes: '72px', widths: '72,144,216', class: 'constrained-image', style: '--image-max-width: 72px' -}}
+        {{- product.featured_media | image_url: width: product.featured_media.width | image_tag: sizes: '60px', widths: '60,120,180', class: 'constrained-image', style: '--image-max-width: 60px' -}}
       {%- else -%}
-        {{- product.featured_media | image_url: width: product.featured_media.width | image_tag: sizes: '150px', widths: '150,300,450', class: 'constrained-image', style: '--image-max-width: 150px' -}}
+        {{- product.featured_media | image_url: width: product.featured_media.width | image_tag: sizes: '100px', widths: '100,200,300', class: 'constrained-image', style: '--image-max-width: 100px' -}}
       {%- endif -%}
     </a>
   {%- endif -%}
 
-  <div class="v-stack {% if layout == 'horizontal' %}justify-items-start{% endif %} gap-2">
-    <div class="v-stack gap-0.5">
+  <div class="v-stack {% if layout == 'horizontal' %}justify-items-start{% endif %} gap-2" style="justify-items: left;">
+    <div class="v-stack gap-0.5" style="text-align: left;">
       <a href="{{ product.url }}" class="{{ title_class }}" data-instant>{{ product.title }}</a>
       {% render 'price-list', product: product, context: 'card' %}
     </div>
@@ -61,7 +61,7 @@ Supported variables
       {%- else -%}
         {%- capture quick_buy_id -%}product-quick-buy-{{ section.id }}-{{ product.id }}{%- endcapture -%}
 
-        <button type="button" aria-controls="{{ quick_buy_id }}" class="link subheading subheading-xs">{{ 'product.general.choose_options' | t }}</button>
+        <button type="button" aria-controls="{{ quick_buy_id }}" class="small-button">{{ 'product.general.choose_options' | t }}</button>
 
         <quick-buy-modal id="{{ quick_buy_id }}" product-url="{{ product.url }}" class="modal modal--quick-buy color-scheme color-scheme--{{ settings.default_color_scheme.id }}">
           {%- comment -%}The content will be dynamically filled in JS{%- endcomment -%}
