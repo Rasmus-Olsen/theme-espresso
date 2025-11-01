@@ -733,6 +733,13 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   position: relative;
 }
 
+/* Compact styling for the Icons with text block on product page */
+.product-info__block-item[data-block-type="icons-with-text"] .content-box {
+  --content-box-spacing: 2rem;
+  --content-box-inline-spacing: 2rem;
+  --content-box-block-spacing: 2rem;
+}
+
 @container content-box (width < 450px) {
   .content-box {
     --content-box-spacing: 1.5rem;
